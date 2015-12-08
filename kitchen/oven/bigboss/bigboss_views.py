@@ -34,6 +34,7 @@ class AssignmentRegView(APIView):
         self.data_response = {
             'success': True,
             'data' : {
+                'id': assignment.id,
                 'name': assignment.name,
                 'contractor': assignment.contractor,
                 'deadline': assignment.deadline,

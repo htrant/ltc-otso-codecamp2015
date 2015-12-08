@@ -21,7 +21,9 @@ class ComponentView(APIView):
         components = Component.objects.all()
         all_data = []
         for component in components:
-            all_data.append(ComponentSerializer(component).data)
+            component_data = ComponentSerializer(component).data
+            component_data['id'] = component.id
+            all_data.append(component_data)
         self.data_response = {
             'success': True,
             'data' : all_data
