@@ -55,6 +55,7 @@ coverage.xml
 
 # Django stuff:
 *.log
+kitchen/oven/migrations/
 
 # Sphinx documentation
 docs/_build/
