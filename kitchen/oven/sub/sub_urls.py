@@ -6,4 +6,5 @@ from oven.sub import sub_views
 urlpatterns = patterns(
     '',
     url(r'^component', sub_views.ComponentView.as_view()),
+    url(r'^contractor', sub_views.ContractorView.as_view()),
 )

@@ -11,12 +11,12 @@ class Component(models.Model):
 class Contractor(models.Model):
     name = models.CharField(max_length=128, default="", null=False)
     location = models.CharField(max_length=128, default="", null=False)
-    component = models.ForeignKey(Component)
+    component = models.CharField(max_length=128, default="", null=False)
     note = models.TextField(null=True, default="")
 
 
 class Assignment(models.Model):
     name = models.CharField(max_length=128, default="", null=False)
-    contractor = models.ForeignKey(Contractor)
+    contractor = models.CharField(max_length=128, default="", null=False)
     deadline = models.DateTimeField(null=False, auto_now_add=True)
     requirement = models.TextField(null=True, default="")
