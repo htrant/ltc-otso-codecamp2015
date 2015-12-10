@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8" />
+        <meta name="format-detection" content="telephone=no" />
+        <meta name="msapplication-tap-highlight" content="no" />
+        <!-- WARNING: for iOS 7, remove the width=device-width and height=device-height attributes. See https://issues.apache.org/jira/browse/CB-4323 -->
+        <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width, height=device-height, target-densitydpi=device-dpi" />
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/foundation/6.0.1/css/foundation.min.css" />
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/foundation/6.0.1/css/foundation.css" />
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/foundation/6.0.1/js/foundation.js"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/foundation/6.0.1/js/foundation.min.js"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/foundation/6.0.1/js/vendor/jquery.min.js"></script>
+		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" />
+		<link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css" />
+		<script src="//code.jquery.com/jquery-1.11.3.min.js"></script>
+		<script src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
+		<script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
+		<script src="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
+		<link rel="stylesheet" type="text/css" href="css/index.css" />
+        <title>Manufacturer</title>
+        <script>
+            $(window).load(function(){
+                var apiUrl = "http://code-camp-winter-trunghieu138.c9users.io:8081/api/bigboss/assignment";
+                var request = new XMLHttpRequest();
+                var res = null;
+                request.open("GET", apiUrl, true);
+                request.onreadystatechange = function() {
+                    if (request.readyState == 4) {
+                        if (request.status == 200 || request.status == 0) {
+                            res = JSON.parse(request.responseText);
+                            if (res.success==true) {
+                                for (var i in res.data) {
+                                    $('#assignment-picker').append('<option value="' + res.data[i].id + '">' + res.data[i].name + '</option>');
+                                }
+                            }
+                        }
+                    }
+                };
+                request.send();
+            });
+        </script>
+    </head>
+
+
+<body>
+<nav class="navbar navbar-inverse" style="text-align:center;background-color: #332C2F;">
+    <h1 style="color:white;margin-top:10px;">MANUFACTURER</h1>
+</nav>
+		
+<div style="margin-top:-40px;position:absolute;background-image: url('phoneback2.jpg');min-width:100%;min-height:100%; background-repeat:  repeat;">			
+		
+<fieldset class="fieldset" style="margin-bottom:0px;opacity:0.85;margin-top:50px;margin-bottom:0px;">
+<form action="" id="pickAssignment">
+    <div class="panel panel-primary" style="margin-bottom:0px;">  
+    <div class="panel-heading">
+        <center>
+            <div id="deviceready" class="blink">
+                <h3 class="panel-title">Find Assignment</h3>
+            </div>
+        </center>
+    </div>
+      
+    <div class="panel-body">
+        <label for="textinput-disabled" style="padding-top:20px;text-align:center;"class="bg-success">Assignment Picker</label>
+        <select name="assignment-picker" id="assignment-picker"></select>
+            
+        <input data-toggle="modal" data-target="#myModal" type="submit" value="Open" />
+    </div>
+    
+    </div>
+</form>
+						<!-- Modal -->
+						<div id="myModal" class="modal fade" role="dialog">
+						  <div class="modal-dialog">
+						    <!-- Modal content-->
+						    <div class="modal-content">
+						      <div class="modal-header">
+						        <!--<button type="button" class="close" data-dismiss="modal">&times;</button>-->
+						        <center><h4 class="modal-title">Assignment view</h4></center>
+						      </div>
+						      <div class="modal-body">
+						          <center>
+<!-- load assignment detail -->
+<div id="assignmentDetail">
+    <table>
+        <tr>
+            <td>Assignment name</td>
+            <td id="assignmentName"></td>
+        </tr>
+        <tr>
+            <td>Component</td>
+            <td id="compName"></td>
+        </tr>
+        <tr>
+            <td>In-charge contractor</td>
+            <td id="contractorName"></td>
+        </tr>
+        <tr>
+            <td>Requirement</td>
+            <td id="requirement"></td>
+        </tr>
+        <tr>
+            <td>Deadline</td>
+            <td id="deadline"></td>
+        </tr>
+        <tr>
+            <td>Rating</td>
+            <td id="rating"></td>
+        </tr>
+    </table>
+</div>
+</center>
+						      </div>
+						      <div class="modal-footer">
+						      	
+						        <button type="button"  class="btn btn-default"  onclick="window.location.href='http://ltc-otso2015-kurosh.c9users.io/viewassignment.html'" data-dismiss="modal">OK</button>
+						      </div>
+						    </div>
+						  </div>
+						</div>
+
+<!-- end of load assignment detail -->
+
+</fieldset>
+	
+       
+<script>
+$( document ).ready(function(){
+    $("#pickAssignment").submit(function(event){
+        event.preventDefault(); // Stop form from submitting normally
+        var assignment = {};
+        var res = null;
+        var assigId = document.getElementById('assignment-picker').value;
+        var apiUrl = "https://code-camp-winter-trunghieu138.c9users.io:8081/api/bigboss/assignment/" + assigId;
+        
+        $.ajax({
+            url     : apiUrl,
+            type    : "GET",
+            dataType: "json",
+            success : function(response) {
+                if(response.success==true) {
+                    assignment = response.data;
+                    console.log(assignment);
+                    $("#assignmentName").text(assignment.name);
+                    $("#compName").text(assignment.component);
+                    $("#contractorName").text(assignment.contractor);
+                    $("#requirement").text(assignment.requirement);
+                    $("#deadline").text(assignment.deadline);
+                    $("#rating").text(assignment.rating);
+                }
+            }
+        }); //end ajax call */
+        
+    }); //end submit
+});
+</script>
+
+<script type="text/javascript" src="cordova.js"></script>
+<script type="text/javascript" src="js/index.js"></script>
+<script type="text/javascript">
+    app.initialize();
+</script>
+</div>
+</body>
+
+</html>
