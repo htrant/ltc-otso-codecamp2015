@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8" />
+        <meta name="format-detection" content="telephone=no" />
+        <meta name="msapplication-tap-highlight" content="no" />
+        <!-- WARNING: for iOS 7, remove the width=device-width and height=device-height attributes. See https://issues.apache.org/jira/browse/CB-4323 -->
+        <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width, height=device-height, target-densitydpi=device-dpi" />
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/foundation/6.0.1/css/foundation.min.css" />
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/foundation/6.0.1/css/foundation.css" />
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/foundation/6.0.1/js/foundation.js"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/foundation/6.0.1/js/foundation.min.js"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/foundation/6.0.1/js/vendor/jquery.min.js"></script>
+		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" />
+		<link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css" />
+		<script src="//code.jquery.com/jquery-1.11.3.min.js"></script>
+		<script src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
+		<script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
+		<script src="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
+		<link rel="stylesheet" type="text/css" href="css/index.css" />
+        <title>Manufacturer</title>
+        <script>
+            $(window).load(function(){
+                var apiUrl = "http://code-camp-winter-trunghieu138.c9users.io:8081/api/bigboss/feedback";
+                var request = new XMLHttpRequest();
+                var res = null;
+                request.open("GET", apiUrl, true);
+                request.onreadystatechange = function() {
+                    if (request.readyState == 4) {
+                        if (request.status == 200 || request.status == 0) {
+                            res = JSON.parse(request.responseText);
+                            if (res.success==true) {
+                                for (var i in res.data) {
+                                    $('#city-picker').append('<option value="' + res.data[i].id + '">' + res.data[i].name + '</option>');
+                                }
+                            }
+                        }
+                    }
+                };
+                request.send();
+            });
+        </script>
+    </head>
+
+
+<body>
+<nav class="navbar navbar-inverse" style="text-align:center;background-color: #332C2F;">
+    <h1 style="color:white;margin-top:10px;">MANUFACTURER</h1>
+</nav>
+		
+<div style="margin-top:-30px;position:absolute;background-image: url('phoneback2.jpg');min-width:100%;min-height:100%; background-repeat:  repeat;">			
+		
+<fieldset class="fieldset" style="margin-bottom:0px;opacity:0.85;margin-top:50px;margin-bottom:0px;">
+<form action="" id="sendRequest">
+    <div class="panel panel-primary" style="margin-bottom:0px;">  
+    <div class="panel-heading">
+        <center>
+            <div id="deviceready" class="blink">
+                <h3 class="panel-title">Send Feedback Request</h3>
+                <p>Choose group of customers regarding their location and ask them to give feedbacks</p>
+            </div>
+        </center>
+    </div>
+      
+    <div class="panel-body">
+        <label for="textinput-disabled" style="padding-top:20px;text-align:center;"class="bg-success">Customers from City</label>
+        <select name="city-picker" id="city-picker"></select>
+            
+        <input type="submit" value="Send Request" />
+    </div>
+    
+    </div>
+</form>
+
+<div id="reportRes"></div>
+
+</fieldset>
+	
+       
+<script>
+$( document ).ready(function(){
+    $("#sendRequest").submit(function(event){
+        event.preventDefault(); // Stop form from submitting normally
+        $("#reportRes").html();
+        
+        var res = null;
+        var apiUrl = "https://code-camp-winter-trunghieu138.c9users.io:8081/api/bigboss/feedback";
+        
+        var selCity = document.getElementById('city-picker');
+        var cityId = selCity.options[selCity.selectedIndex].value;
+        var requestData = {
+            'city_id'  : cityId
+        }
+        
+        $.ajax({
+            url     : apiUrl,
+            data    : requestData,
+            type    : "POST",
+            dataType: "json",
+            success : function(response) {
+                if(response.success==true) {
+                    var customers = response.data;
+                    var message = "<h4>Email is sent to customers: </h4>";
+                    for (var i in customers) {
+                        var cus = customers[i];
+                        message += "<p>" + cus.name + " (" + cus.email + ")" + "</p>";
+                    }
+                    $("#reportRes").html(message);
+                }
+            }
+        }); //end ajax call
+        
+    }); //end submit
+});
+</script>
+
+<script type="text/javascript" src="cordova.js"></script>
+<script type="text/javascript" src="js/index.js"></script>
+<script type="text/javascript">
+    app.initialize();
+</script>
+</div>
+</body>
+
+</html>
