@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <meta charset="utf-8" />
+        <meta name="format-detection" content="telephone=no" />
+        <meta name="msapplication-tap-highlight" content="no" />
+        <!-- WARNING: for iOS 7, remove the width=device-width and height=device-height attributes. See https://issues.apache.org/jira/browse/CB-4323 -->
+        <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width, height=device-height, target-densitydpi=device-dpi" />
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/foundation/6.0.1/css/foundation.min.css" />
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/foundation/6.0.1/css/foundation.css" />
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/foundation/6.0.1/js/foundation.js"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/foundation/6.0.1/js/foundation.min.js"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/foundation/6.0.1/js/vendor/jquery.min.js"></script>
+		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" />
+		<link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css" />
+		<script src="//code.jquery.com/jquery-1.11.3.min.js"></script>
+		<script src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
+		<script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
+		<script src="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
+		<link rel="stylesheet" type="text/css" href="css/index.css" />
+		 <script>
+            $(window).load(function(){
+                //alert("This function is loaded");
+                var apiUrl = "https://code-camp-winter-trunghieu138.c9users.io:8081/api/sub/component";
+                var request = new XMLHttpRequest();
+                var res = null;
+                request.open("GET", apiUrl, true);
+                request.onreadystatechange = function() {
+                    if (request.readyState == 4) {
+                        if (request.status == 200 || request.status == 0) {
+                            res = JSON.parse(request.responseText);
+                            if (res.success==true) {
+                                for (var i in res.data) {
+                                    $('#select-custom-2').append('<option value="' + res.data[i].id + '">' + res.data[i].name + '</option>');
+                                }
+                            }
+                        }
+                    }
+                    //$('#myselect').append('<option value="test1">test1</option>');
+                };
+                request.send();
+            });
+        </script>
+        <title>Feedback Form (Customer)</title>
+        
+    </head>
+    <body>
+	<nav class="navbar navbar-inverse" style="text-align:center;">
+  <h1 style="color:white;margin-top:10px;">CUSTOMER</h1>
+</nav>
+<div style="margin-top:-30px;position:absolute;background-image: url('phoneback2.jpg');min-width:100%;min-height:100%; background-repeat:  repeat;">			
+		
+<fieldset class="fieldset" style="margin-bottom:0px;opacity:0.85;margin-top:50px;margin-bottom:0px;">
+ 
+
+
+            <!--<div id="deviceready" class="blink">-->
+			<form>
+			<!--<div class="ui-field-contain">-->
+			    
+			<div class="panel panel-primary">  <div class="panel-heading">
+			<div id="deviceready" class="blink">
+                <center><h3 class="panel-title">Feedback form</h3></center>
+            </div>
+				  </div>
+				  <div class="panel-body">
+				      <div class="panel-body">
+				        <label style="padding-top:20px;text-align:center;margin-bottom:-10px;" for="textinput-disabled"class="bg-success">Name</label>
+			    <input style="padding-top:0px;"type="text" name="" id="" placeholder="" value="">
+				
+				        <label style="padding-top:20px;text-align:center;margin-bottom:-10px;margin-top:10px;" for="textinput-disabled"class="bg-success">Phone</label>
+			    <input style="padding-top:0px;"type="text" name="" id="" placeholder="" value="">
+								
+						<label style="padding-top:20px;text-align:center;margin-bottom:-10px;margin-top:10px;" for="textinput-disabled"class="bg-success">Email</label>
+			    <input style="padding-top:0px;"type="text" name="" id="" placeholder="" value="">
+				
+				        <label style="padding-top:20px;text-align:center;margin-bottom:-10px;margin-top:10px;" for="textinput-disabled"class="bg-success">Address</label>
+			    <input style="padding-top:0px;"type="text" name="" id="" placeholder="" value="">
+				
+				        <label style="padding-top:20px;text-align:center;margin-bottom:-10px;margin-top:10px;" for="textinput-disabled"class="bg-success">Social security number</label>
+			    <input style="padding-top:0px;"type="text" name="" id="" placeholder="" value="">
+				
+
+                        
+                    </div>
+                <div class="panel-body">
+  				    <fieldset>
+                        <legend></legend>
+                        <label>
+                            <label style="padding-top:20px;text-align:center;margin-top:10px;margin-bottom:-3px;" for="textinput-disabled"class="bg-success">Identify component</label>
+                            <select name="select-custom-2" id="select-custom-2"></select>
+                        </label>
+                    </fieldset>
+                </div>
+                <div class="panel-body">
+    				<fieldset>
+                        <legend></legend>
+                        <label>
+                            <label style="padding-top:20px;text-align:center;margin-top:10px;margin-bottom:-3px;" for="textinput-disabled"class="bg-success">Problem complaint</label>
+                            <textarea placeholder="Insert your problem complaint here"></textarea>
+                        
+                        
+                         <label style="padding-top:20px;text-align:center;margin-top:10px;margin-bottom:-3px;"class="bg-success">Experience</label>
+
+                        </label>
+                            <fieldset data-role="controlgroup">
+                            	<legend></legend>
+                            	<div style="width:100%;">
+                            	    <center>
+                            	        
+                                 	<input style="margin-top:10px;display:inline-block;width:20%;background-color:#ff6500;" type="radio" name="radio-choice" id="radio-choice-1" value="choice-1" checked="checked" />
+                                 	<label style="float:left;width:20%;;background-color:#ff6500;color:white;font-size:12px;" for="radio-choice-1">1</label>
+                            
+                                 	<input style="margin-top:10px;display:inline-block;width:20%;;" type="radio" name="radio-choice" id="radio-choice-2" value="choice-2"  />
+                                 	<label style="float:left;width:20%;; background-color:#ffcc00;color:white;font-size:12px;" for="radio-choice-2">2</label>
+                            
+                                 	<input style="margin-top:10px;display:inline-block;width:20%;;" type="radio" name="radio-choice" id="radio-choice-3" value="choice-3"  />
+                                 	<label style="float:left;width:20%;;background-color:#99ff66;color:white;font-size:12px;"for="radio-choice-3">3</label>
+                            
+                                 	<input style="margin-top:10px;display:inline-block;width:20%;;" type="radio" name="radio-choice" id="radio-choice-4" value="choice-4"  />
+                                 	<label style="float:left;width:20%;;background-color:#33cc33;color:white;font-size:12px;"for="radio-choice-4">4</label>
+                                 	
+                                 	<input style="margin-top:10px;display:inline-block;width:20%;;"  type="radio" name="radio-choice" id="radio-choice-5" value="choice-5"  />
+                                 	<label style="float:left;width:20%;;background-color:#009933;color:white;font-size:12px;"for="radio-choice-5">5</label>
+                                    </center>
+                                </div>
+                            </fieldset>
+                        
+                    </fieldset>
+                </div> 
+                
+                    <div>
+                        <button data-toggle="modal" data-target="#myModal" type="submit" style="float:left;width:33%;background-color:#5cb85c;">
+                            <span class="glyphicon glyphicon-thumbs-up" aria-hidden="true"></span>
+                            <span class="glyphicon glyphicon-thumbs-down" aria-hidden="true"></span>
+                            <p style="font-size:10px;color:white;">Send feedback</p>
+                        </button>
+                        <!-- Modal -->
+                        <div id="myModal" class="modal fade" role="dialog">
+                          <div class="modal-dialog">
+                        
+                            <!-- Modal content-->
+                            <div class="modal-content">
+                              <div class="modal-header">
+                                <!--<button type="button" class="close" data-dismiss="modal">&times;</button>-->
+                                <center><h4 class="modal-title">Status</h4></center>
+                              </div>
+                              <div class="modal-body">
+                                <center><p>Feedback was sent.</p></center>
+                              </div>
+                              <div class="modal-footer">
+                                <button onclick="window.location.href='http://ltc-otso2015-kurosh.c9users.io/feedbackformcust.html'" type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                              </div>
+                            </div>
+                        
+                          </div>
+                        </div>
+                        <button onclick="window.location.href='http://ltc-otso2015-kurosh.c9users.io/feedbackformcust.html'" type="submit" style="float:left;width:33%;background-color:#f0ad4e;">
+                            <span class="glyphicon glyphicon-trash" aria-hidden="true"></span>
+                            <p style="font-size:10px;color:white;">Reset</p>
+                        </button> 
+                        <button onClick="location.href='http://ltc-otso2015-kurosh.c9users.io/customer.html'" type="submit" style="float:left;width:33%;background-color:#d9534f;">
+                            <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
+                            <p style="font-size:10px;color:white;">Close</p>
+                        </button>
+                    </div>
+               
+                    
+                    
+
+				</div> 
+
+				</div>
+
+			 </div>
+			</form>
+</fieldset>
+			<!--</div>
+                <p class="event listening">Connecting to Device</p>
+                <p class="event received">Device is Ready</p>
+            </div>-->
+        <!--</div>-->
+	
+   
+			
+
+
+    </body>
+</html>
