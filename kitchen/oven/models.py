@@ -39,3 +39,10 @@ class CustomerFeedback(models.Model):
     problem = models.TextField(null=True, default="")
     rating = models.SmallIntegerField(null=False, default=0)
 
+
+class Customer(models.Model):
+    name = models.CharField(max_length=128, default="", null=False)
+    phone = models.CharField(max_length=128, default="", null=False)
+    email = models.CharField(max_length=128, default="", null=False)
+    city = models.CharField(max_length=128, default="", null=False)
+    address = models.CharField(max_length=128, default="", null=False)
