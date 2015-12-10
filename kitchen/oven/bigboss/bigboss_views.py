@@ -4,7 +4,7 @@ from datetime import datetime
 from rest_framework import status
 from rest_framework.response import Response
 from rest_framework.views import APIView
-from oven.models import Assignment, Contractor, Component
+from oven.models import Assignment, Contractor, Component, City
 from oven.bigboss.bigboss_serializers import AssignmentRegSerializer
 
 
@@ -135,6 +135,38 @@ class AssignmentAllView(APIView):
         self.data_response = {
             'success': True,
             'data' : all_data
+        }
+        return Response(self.data_response, status=status.HTTP_200_OK)
+
+    def put(self, request):
+        pass
+
+    def delete(self, request):
+        pass
+
+
+class FeedbackRequestView(APIView):
+    def __init__(self):
+        object.__init__(self)
+        self.data_response = {}
+
+    def post(self, request):
+        pass
+
+    ### return all cities ###
+    def get(self, request):
+        self.data_response = {}
+        cities = City.objects.all()
+        all_data = []
+        for city in cities:
+            city_data = {
+                'id'    : city.id,
+                'name'  : city.name
+            }
+            all_data.append(city_data)
+        self.data_response = {
+            'success'   : True,
+            'data'      : all_data
         }
         return Response(self.data_response, status=status.HTTP_200_OK)
 
