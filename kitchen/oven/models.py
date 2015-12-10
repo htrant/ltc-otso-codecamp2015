@@ -46,3 +46,7 @@ class Customer(models.Model):
     email = models.CharField(max_length=128, default="", null=False)
     city = models.CharField(max_length=128, default="", null=False)
     address = models.CharField(max_length=128, default="", null=False)
+
+
+class City(models.Model):
+    name = models.CharField(max_length=128, default="", null=False)
