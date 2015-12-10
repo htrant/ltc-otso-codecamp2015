@@ -14,6 +14,7 @@ class AssignmentRegView(APIView):
         self.data_response = {}
 
     def post(self, request):
+        print request.data
         serializer = AssignmentRegSerializer(data=request.data)
         if not serializer.is_valid():
             self.data_response = {
