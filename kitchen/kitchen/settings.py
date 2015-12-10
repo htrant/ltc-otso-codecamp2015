@@ -33,6 +33,7 @@ ALLOWED_HOSTS = []
 INSTALLED_APPS = [
     'rest_framework',
     'oven',
+    'djrill',
 ]
 
 
@@ -86,3 +87,8 @@ STATIC_URL = '/static/'
 
 # Remove slash at API URL resource
 APPEND_SLASH = False
+
+# Maildrill
+MANDRILL_API_KEY = "PSL8MFTx5MBKZysK9Lsbww"
+EMAIL_BACKEND = "djrill.mail.backends.djrill.DjrillBackend"
+DEFAULT_FROM_EMAIL = "trunghieu.tran138@gmail.com"

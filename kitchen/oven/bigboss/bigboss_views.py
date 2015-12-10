@@ -4,8 +4,9 @@ from datetime import datetime
 from rest_framework import status
 from rest_framework.response import Response
 from rest_framework.views import APIView
-from oven.models import Assignment, Contractor, Component, City
+from oven.models import Assignment, Contractor, Component, City, Customer
 from oven.bigboss.bigboss_serializers import AssignmentRegSerializer
+from oven.mail.email_manager import EmailManager
 
 
 class AssignmentView(APIView):
@@ -151,7 +152,23 @@ class FeedbackRequestView(APIView):
         self.data_response = {}
 
     def post(self, request):
-        pass
+        self.data_response = {}
+        data = request.data
+        all_data = []
+        city_id = data['city_id']
+        customers = Customer.objects.filter(city=city_id)
+        for customer in customers:
+            EmailManager.send_feedback_request(customer.email)
+            customer_data = {
+                "name"  : customer.name,
+                "email" : customer.email
+            }
+            all_data.append(customer_data)
+        self.data_response = {
+            "success"   : True,
+            "data"      : all_data
+        }
+        return Response(self.data_response, status=status.HTTP_200_OK)
 
     ### return all cities ###
     def get(self, request):
