@@ -68,8 +68,8 @@ class AssignmentDetailView(APIView):
     ### Get one assignment's detail ###
     def get(self, request, id):
         assignment = Assignment.objects.get(pk=id)
-        contractor = Contractor.objects.get(pk=assignment.component)
         component = Component.objects.get(pk=assignment.component)
+        contractor = Contractor.objects.get(pk=assignment.contractor)
         return_data = {
             'id'        : assignment.id,
             'name'      : assignment.name,
@@ -79,7 +79,6 @@ class AssignmentDetailView(APIView):
             'component' : component.name,
             'rating'    : assignment.rating
         }
-        print return_data
         self.data_response = {
             'success'   : True,
             'data'      : return_data
