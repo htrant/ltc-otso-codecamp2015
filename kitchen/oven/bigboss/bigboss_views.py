@@ -4,7 +4,7 @@ from datetime import datetime
 from rest_framework import status
 from rest_framework.response import Response
 from rest_framework.views import APIView
-from oven.models import Assignment, Contractor
+from oven.models import Assignment, Contractor, Component
 from oven.bigboss.bigboss_serializers import AssignmentRegSerializer
 
 
@@ -69,12 +69,14 @@ class AssignmentDetailView(APIView):
     def get(self, request, id):
         assignment = Assignment.objects.get(pk=id)
         contractor = Contractor.objects.get(pk=assignment.component)
+        component = Component.objects.get(pk=assignment.component)
         return_data = {
             'id'        : assignment.id,
             'name'      : assignment.name,
             'requirement': assignment.requirement,
             'deadline'  : assignment.deadline,
             'contractor': contractor.name,
+            'component' : component.name,
             'rating'    : assignment.rating
         }
         print return_data
