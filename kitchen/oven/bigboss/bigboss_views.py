@@ -47,22 +47,8 @@ class AssignmentView(APIView):
         }
         return Response(self.data_response, status=status.HTTP_200_OK)
 
-    ### Get all set assignments ###
     def get(self, request):
-        self.data_response = {}
-        assignments = Assignment.objects.all()
-        all_data = []
-        for assignment in assignments:
-            assignment_data = {
-                'id'    : assignment.id,
-                'name'  : assignment.name
-            }
-            all_data.append(assignment_data)
-        self.data_response = {
-            'success': True,
-            'data' : all_data
-        }
-        return Response(self.data_response, status=status.HTTP_200_OK)
+        pass
 
     def put(self, request):
         pass
@@ -121,6 +107,38 @@ class AssignmentDetailView(APIView):
             }
         }
         return Response(self.data_response, status=status.HTTP_200_OK)
+
+    def delete(self, request):
+        pass
+
+
+class AssignmentAllView(APIView):
+    def __init__(self):
+        object.__init__(self)
+        self.data_response = {}
+
+    def post(self, request):
+        pass
+
+    ### Get all set assignments ###
+    def get(self, request):
+        self.data_response = {}
+        assignments = Assignment.objects.all()
+        all_data = []
+        for assignment in assignments:
+            assignment_data = {
+                'id'    : assignment.id,
+                'name'  : assignment.name
+            }
+            all_data.append(assignment_data)
+        self.data_response = {
+            'success': True,
+            'data' : all_data
+        }
+        return Response(self.data_response, status=status.HTTP_200_OK)
+
+    def put(self, request):
+        pass
 
     def delete(self, request):
         pass
