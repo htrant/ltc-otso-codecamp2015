@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8" />
+        <meta name="format-detection" content="telephone=no" />
+        <meta name="msapplication-tap-highlight" content="no" />
+        <!-- WARNING: for iOS 7, remove the width=device-width and height=device-height attributes. See https://issues.apache.org/jira/browse/CB-4323 -->
+        <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width, height=device-height, target-densitydpi=device-dpi" />
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/foundation/6.0.1/css/foundation.min.css" />
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/foundation/6.0.1/css/foundation.css" />
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/foundation/6.0.1/js/foundation.js"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/foundation/6.0.1/js/foundation.min.js"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/foundation/6.0.1/js/vendor/jquery.min.js"></script>
+		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" />
+		<link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css" />
+		<script src="//code.jquery.com/jquery-1.11.3.min.js"></script>
+		<script src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
+		<script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
+		<script src="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
+		<link rel="stylesheet" type="text/css" href="css/index.css" />
+        <title>Manufacturer</title>
+        <script>
+            $('#date').datepicker(); 
+        </script>
+        <script>
+            $(window).load(function(){
+                //alert("This function is loaded");
+                var apiUrl = "https://code-camp-winter-trunghieu138.c9users.io:8081/api/sub/component";
+                var request = new XMLHttpRequest();
+                var res = null;
+                request.open("GET", apiUrl, true);
+                request.onreadystatechange = function() {
+                    if (request.readyState == 4) {
+                        if (request.status == 200 || request.status == 0) {
+                            res = JSON.parse(request.responseText);
+                            if (res.success==true) {
+                                for (var i in res.data) {
+                                    $('#select-component').append('<option value="' + res.data[i].id + '">' + res.data[i].name + '</option>');
+                                }
+                            }
+                        }
+                    }
+                    //$('#myselect').append('<option value="test1">test1</option>');
+                };
+                request.send();
+            });
+        </script>
+        <script>
+            $(window).load(function(){
+                //alert("This function is loaded");
+                var apiUrl = "https://code-camp-winter-trunghieu138.c9users.io:8081/api/sub/contractor";
+                var request = new XMLHttpRequest();
+                var res = null;
+                request.open("GET", apiUrl, true);
+                request.onreadystatechange = function() {
+                    if (request.readyState == 4) {
+                        if (request.status == 200 || request.status == 0) {
+                            res = JSON.parse(request.responseText);
+                            if (res.success==true) {
+                                for (var i in res.data) {
+                                    $('#select-contractor').append('<option value="' + res.data[i].id + '">' + res.data[i].name + '</option>');
+                                }
+                            }
+                        }
+                    }
+                };
+                request.send();
+            });
+        </script>
+    </head>
+
+
+<body>
+    <nav class="navbar navbar-inverse" style="text-align:center;background-color: #332C2F;">
+        <h1 style="color:white;margin-top:10px;">MANUFACTURER</h1>
+    </nav>
+		
+		
+<fieldset class="fieldset" style="margin-bottom:0px;">
+<form action="" id="registerAssignment">
+    <div class="panel panel-primary" style="margin-bottom:0px;">  
+    <div class="panel-heading">
+        <center>
+            <div id="deviceready" class="blink">
+                <h3 class="panel-title">Create assignment</h3>
+            </div>
+        </center>
+      </div>
+      
+    <div class="panel-body">
+        <label style="padding-top:20px;text-align:center;" class="bg-success">Task's Name</label>
+        <input type="text" data-clear-btn="false" name="taskname-1" id="taskname-1">
+        
+        <label for="textinput-disabled" style="padding-top:20px;text-align:center;"class="bg-success">Select Component</label>
+        <select name="select-component" id="select-component"></select>
+    
+        <label style="padding-top:20px;text-align:center;"class="bg-success">Assign Subcontractor</label>
+        <select name="select-contractor" id="select-contractor"></select>
+    
+    	<label style="padding-top:20px;text-align:center;"class="bg-success">Requirements</label>
+        <textarea  cols="40" rows="8" name="req" id="req"></textarea>
+    
+        <label style="padding-top:20px;text-align:center;" class="bg-success">Deadline</label>
+        <input type="date" data-clear-btn="false" name="date-1" id="date-1" value="">
+
+        <div style="padding-top:20px;float:left;width:100%;">
+            
+        <input type="submit" value="Create Assignment" />
+            
+            <!--<button type="submit" style="float:left;width:25%;background-color:#428bca;">
+                <span class="glyphicon glyphicon-ok" aria-hidden="true"></span>
+                <p style="font-size:12px;color:white;">Create</p>
+            </button>-->
+            
+            
+                <div>
+                <button type="submit" style="float:left;width:33%;background-color:#5cb85c;">
+                    <span class="glyphicon glyphicon-floppy-save" aria-hidden="true"></span>
+                    <p style="font-size:20px;color:white;">Save</p>
+                </button>
+                
+                <button onclick="window.location.href='http://ltc-otso2015-kurosh.c9users.io/createassignmentmanu.html'" type="submit" style="float:left;width:33%;background-color:#f0ad4e;">
+                    <span class="glyphicon glyphicon-trash" aria-hidden="true"></span>
+                    <p style="font-size:20px;color:white;">Reset</p>
+                </button> 
+                
+                <button onClick="location.href='http://ltc-otso2015-kurosh.c9users.io/manufacturer.html'" type="submit" style="float:left;width:33%;background-color:#d9534f;">
+                    <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
+                    <p style="font-size:20px;color:white;">Close</p>
+                </button>
+                </div>
+            
+        </div>
+     </div>
+    </div>
+</form>
+</fieldset>
+	
+       
+<script>
+$( document ).ready(function(){
+    $("#registerAssignment").submit(function(event){
+        event.preventDefault(); // Stop form from submitting normally
+        
+        var assignment = {};
+        var res = null;
+        var apiUrl = "https://code-camp-winter-trunghieu138.c9users.io:8081/api/bigboss/create";
+        
+        /** Get input data from the form **/
+        var taskName = document.getElementById('taskname-1').value;
+        var selectComp = document.getElementById('select-component');
+        var component = selectComp.options[selectComp.selectedIndex].value;
+        var selectCon = document.getElementById('select-contractor');
+        var contractor = selectCon.options[selectCon.selectedIndex].value;
+        var requirement = document.getElementById("req").value;
+        var deadline = document.getElementById("date-1").value;
+        /** fininsh get input data **/
+        
+        assignment = {
+            "name"          : taskName,
+            "component"     : component,
+            "contractor"    : contractor,
+            "deadline"      : deadline,
+            "requirement"   : requirement
+        }; //end set attribute's value
+        
+        $.ajax({
+            url     : apiUrl,
+            data    : assignment,
+            type    : "POST",
+            dataType: "json",
+            success : function(response) {
+                if(response.success==true) {
+                    assignment = response.data;
+                    var message = "Assignment is successfully created \n";
+                    message += "Task's name: " + assignment.name + "\n";
+                    alert(message);
+                    location.reload();
+                }
+            }
+        }); //end ajax call
+        
+    }); //end submit
+});
+</script>
+
+<script type="text/javascript" src="cordova.js"></script>
+<script type="text/javascript" src="js/index.js"></script>
+<script type="text/javascript">
+    app.initialize();
+</script>
+</body>
+
+</html>
