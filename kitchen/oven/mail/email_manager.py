@@ -18,7 +18,7 @@ class EmailManager:
             headers={'Reply-To': "The Propeller Hats <trunghieu.tran138@gmail.com>"}  # optional extra headers
         )
         message_body = "<p>Please give us your opinion about our products</p>" \
-                       "<p><a href=\"http://code-camp-winter-trunghieu138.c9users.io/feedbackformcust.html\">Fill in feedback form</a></p>"
+                       "<p><a href=\"http://ltc-otso2015-kurosh.c9users.io/feedbackformcust.html\">Fill in feedback form</a></p>"
 
         msg.attach_alternative(message_body, "text/html")
         msg.send()
