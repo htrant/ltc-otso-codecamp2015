@@ -24,7 +24,7 @@
             $('#date').datepicker(); 
         </script>
         <script>
-            $(window).load(function(){
+            /*$(window).load(function(){
                 //alert("This function is loaded");
                 var apiUrl = "https://code-camp-winter-trunghieu138.c9users.io:8081/api/sub/component";
                 var request = new XMLHttpRequest();
@@ -44,6 +44,25 @@
                     //$('#myselect').append('<option value="test1">test1</option>');
                 };
                 request.send();
+            });*/
+            
+            $(window).load(function(){
+                var apiURL = "https://code-camp-winter-trunghieu138.c9users.io:8081/api/sub/component";
+                $.ajax({
+                    url     : apiURL,
+                    type    : "GET",
+                    dataType: "json",
+                    success : function(response) {
+                        if(response.success==true) {
+                            alert(response.success);
+                            //assignment = response.data;
+                            //var message = "Assignment is successfully created \n";
+                            //message += "Task's name: " + assignment.name + "\n";
+                            //alert(message);
+                            //location.reload();
+                        }
+                    }
+                }); //end ajax call
             });
         </script>
         <script>
@@ -120,12 +139,12 @@
                     <p style="font-size:20px;color:white;">Save</p>
                 </button>
                 
-                <button onclick="window.location.href='http://ltc-otso2015-kurosh.c9users.io/createassignmentmanu.html'" type="submit" style="float:left;width:33%;background-color:#f0ad4e;">
+                <button onclick="window.location.href='http://code-camp-winter-trunghieu138.c9users.io/createassignmentmanu.html'" type="submit" style="float:left;width:33%;background-color:#f0ad4e;">
                     <span class="glyphicon glyphicon-trash" aria-hidden="true"></span>
                     <p style="font-size:20px;color:white;">Reset</p>
                 </button> 
                 
-                <button onClick="location.href='http://ltc-otso2015-kurosh.c9users.io/manufacturer.html'" type="submit" style="float:left;width:33%;background-color:#d9534f;">
+                <button onClick="location.href='http://code-camp-winter-trunghieu138.c9users.io/manufacturer.html'" type="submit" style="float:left;width:33%;background-color:#d9534f;">
                     <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
                     <p style="font-size:20px;color:white;">Close</p>
                 </button>
