@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8" />
+        <meta name="format-detection" content="telephone=no" />
+        <meta name="msapplication-tap-highlight" content="no" />
+        <!-- WARNING: for iOS 7, remove the width=device-width and height=device-height attributes. See https://issues.apache.org/jira/browse/CB-4323 -->
+        <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width, height=device-height, target-densitydpi=device-dpi" />
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/foundation/6.0.1/css/foundation.min.css" />
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/foundation/6.0.1/css/foundation.css" />
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/foundation/6.0.1/js/foundation.js"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/foundation/6.0.1/js/foundation.min.js"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/foundation/6.0.1/js/vendor/jquery.min.js"></script>
+		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" />
+		<link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css" />
+		<script src="//code.jquery.com/jquery-1.11.3.min.js"></script>
+		<script src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
+		<script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
+		<script src="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
+		<link rel="stylesheet" type="text/css" href="css/index.css" />
+        <title>Feedback tracking</title>
+    </head>
+    <body>
+	<nav class="navbar navbar-inverse" style="margin-bottom:0;text-align:center;background-color: #332C2F;">
+  <h1 style="color:white;margin-top:10px;">TRACK FEEDBACK</h1>
+</nav>
+	
+<fieldset class="fieldset" style="margin-top:50px;margin-bottom:0px;">
+		<form onsubmit="onSubmit()" >
+				<!--<div class="ui-field-contain">-->
+				<div class="panel panel-primary">  
+					<div class="panel-heading">
+						<div id="deviceready" class="blink"><center><h3 class="panel-title">Track feedback</h3></center></div>
+					</div>
+					<div class="panel-body">
+				        <label style="padding-top:20px;text-align:center;margin-bottom:-20px;"for="textinput-disabled">Consignment No.</label>
+			    <input style="padding-top:0px;"type="text" name="" id="" placeholder="" value="">
+			            <!-- Trigger the modal with a button -->
+						<button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">OK</button>
+						<!-- Modal -->
+						<div id="myModal" class="modal fade" role="dialog">
+						  <div class="modal-dialog">
+						    <!-- Modal content-->
+						    <div class="modal-content">
+						      <div class="modal-header">
+						        <button type="button" class="close" data-dismiss="modal">&times;</button>
+						        <center><h4 class="modal-title">Tracked feedback</h4></center>
+						      </div>
+						      <div class="modal-body">
+						        <label style="padding-top:20px;text-align:center;margin-bottom:-20px;"for="textinput-disabled">Status</label>
+					    <input style="padding-top:0px;"type="text" name="" id="" placeholder="" value="">
+					            <label style="padding-top:20px;text-align:center;margin-bottom:-20px;"for="textinput-disabled">Trouble component</label>
+					    <input style="padding-top:0px;"type="text" name="" id="" placeholder="" value="">
+					           	<label style="padding-top:20px;text-align:center;margin-bottom:-20px;"for="textinput-disabled">Solution</label>
+					    <input style="padding-top:0px;"type="text" name="" id="" placeholder="" value="">
+						      </div>
+						      <div class="modal-footer">
+						      	
+						        <button type="button"  class="btn btn-default"  onclick="window.location.href='http://ltc-otso2015-kurosh.c9users.io/customer.html'" data-dismiss="modal">OK</button>
+						      </div>
+						    </div>
+						  </div>
+						</div>
+	   				</div>
+				</div>
+				</div>
+		</form>
+	</fieldset>
+</div>
+</body>
+</html>
+
+
+
+
+
+
+
+

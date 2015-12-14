@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8" />
+        <meta name="format-detection" content="telephone=no" />
+        <meta name="msapplication-tap-highlight" content="no" />
+        <!-- WARNING: for iOS 7, remove the width=device-width and height=device-height attributes. See https://issues.apache.org/jira/browse/CB-4323 -->
+        <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width, height=device-height, target-densitydpi=device-dpi" />
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/foundation/6.0.1/css/foundation.min.css" />
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/foundation/6.0.1/css/foundation.css" />
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/foundation/6.0.1/js/foundation.js"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/foundation/6.0.1/js/foundation.min.js"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/foundation/6.0.1/js/vendor/jquery.min.js"></script>
+		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" />
+		<link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css" />
+		<link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
+		
+        <link rel="stylesheet" href="http://code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
+        <script src="http://code.jquery.com/jquery-1.10.2.js"></script>
+        <script src="http://code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
+        
+<link href="css/star-rating.css" media="all" rel="stylesheet" type="text/css" />
+
+        
+        
+		<script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
+		<script src="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
+
+        <title>Scoreboard</title>
+    </head>
+<body>
+	<nav class="navbar navbar-inverse" style="margin-bottom:0;text-align:center;background-color: #332C2F;">
+  <h1 style="color:white;margin-top:10px;">SCOREBOARD</h1>
+</nav>
+	
+<div style="position:absolute;background-image: url('phoneback2.jpg');background-size: 100% 100%;width: 100%;height: 100%; height: auto !important;  min-height:100%;">			
+<fieldset class="fieldset" style="opacity:0.9;margin-top:50px;margin-bottom:0px;">
+    <form action="" id="registerAssignment">
+        <div class="panel panel-primary" style="margin-bottom:0px;">  
+        <div class="panel-heading">
+            <center>
+                <div id="deviceready" class="blink">
+                    <h3 class="panel-title">View Scoreboard</h3>
+                </div>
+            </center>
+          </div>
+        <div class="panel-body">
+            <label style="padding-top:20px;text-align:center;" class="bg-success">Assignment NO</label>
+            <input type="text" data-clear-btn="false" placeholder="1001" name="taskname-1" id="taskname-1">
+            
+            <label style="padding-top:20px;text-align:center;" class="bg-success">Status</label>
+            <input type="text" data-clear-btn="false" placeholder="Pending" name="taskname-2" id="taskname-2">
+            
+            <label style="padding-top:20px;text-align:center;" class="bg-success">Anwser</label>
+            <input type="text" data-clear-btn="false" placeholder="I did not like this product" name="taskname-3" id="taskname-3">
+            
+            <label style="padding-top:20px;text-align:center;" class="bg-success">Quality of service</label>
+            <center>
+            <div class="rating">
+            <span style="font-size:60px;">☆</span><span style="font-size:60px;">☆</span><span style="font-size:60px;">☆</span><span style="font-size:60px;">☆</span><span style="font-size:60px;">☆</span>
+            </div>
+             </center>
+             <center>
+            <label style="padding-top:20px;text-align:center;" class="bg-success">Navigation</label>
+            <div class="rating">
+            <span style="font-size:60px;">☆</span><span style="font-size:60px;">☆</span><span style="font-size:60px;">☆</span><span style="font-size:60px;">☆</span><span style="font-size:60px;">☆</span>
+            </div>                
+            </center>
+            <center>
+            <label style="padding-top:20px;text-align:center;" class="bg-success">Query handling</label>
+            <div class="rating">
+            <span style="font-size:60px;">☆</span><span style="font-size:60px;">☆</span><span style="font-size:60px;">☆</span><span style="font-size:60px;">☆</span><span style="font-size:60px;">☆</span>
+            </div>
+             </center>
+                    <div>
+                    <button onclick="window.location.href='http://ltc-otso2015-kurosh.c9users.io/index.html'" type="submit" style="float:left;width:33%;background-color:#5cb85c;">
+                        <span class="glyphicon glyphicon-floppy-save" aria-hidden="true"></span>
+                        <p style="font-size:20px;color:white;">OK</p>
+                    </button>
+                    
+                    <button onclick="window.location.href='http://ltc-otso2015-kurosh.c9users.io/scoreboard.html'" type="submit" style="float:left;width:33%;background-color:#f0ad4e;">
+                        <span class="glyphicon glyphicon-trash" aria-hidden="true"></span>
+                        <p style="font-size:20px;color:white;">Dismiss</p>
+                    </button> 
+                    
+                    <button onClick="location.href='http://ltc-otso2015-kurosh.c9users.io/index.html'" type="submit" style="float:left;width:33%;background-color:#d9534f;">
+                        <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
+                        <p style="font-size:20px;color:white;">Close</p>
+                    </button>
+                    </div>
+                
+            </div>
+         </div>
+        </div>
+    </form>
+    </fieldset>
+</body>
+
+</html>
