@@ -2,6 +2,7 @@
 <html>
     <head>
         <meta charset="utf-8" />
+        <title>Manufacturer</title>
         <meta name="format-detection" content="telephone=no" />
         <meta name="msapplication-tap-highlight" content="no" />
         <!-- WARNING: for iOS 7, remove the width=device-width and height=device-height attributes. See https://issues.apache.org/jira/browse/CB-4323 -->
@@ -14,18 +15,30 @@
 		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
 		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" />
 		<link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css" />
-		<script src="//code.jquery.com/jquery-1.11.3.min.js"></script>
-		<script src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
+		<link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
+		
+        <link rel="stylesheet" href="http://code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
+        <script src="http://code.jquery.com/jquery-1.10.2.js"></script>
+        <script src="http://code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
+        <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
 		<script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
 		<script src="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
+ <script>
+ 
+  $(function() {
+    $( "#datepicker" ).datepicker();
+  });
+  </script>
+		<script src="js/jquery.ui.datepicker.mobile.js"></script>
+		<script src="js/JQuery.ui.datepicker.js"></script>
 		<link rel="stylesheet" type="text/css" href="css/index.css" />
+		<link rel="stylesheet" type="text/css" href="css/jquery.ui.datepicker.mobile.css" />
         <title>Manufacturer</title>
         <script>
             $('#date').datepicker(); 
         </script>
         <script>
-            /*$(window).load(function(){
-                //alert("This function is loaded");
+            $(window).load(function(){
                 var apiUrl = "https://code-camp-winter-trunghieu138.c9users.io:8081/api/sub/component";
                 var request = new XMLHttpRequest();
                 var res = null;
@@ -41,33 +54,12 @@
                             }
                         }
                     }
-                    //$('#myselect').append('<option value="test1">test1</option>');
                 };
                 request.send();
-            });*/
-            
-            $(window).load(function(){
-                var apiURL = "https://code-camp-winter-trunghieu138.c9users.io:8081/api/sub/component";
-                $.ajax({
-                    url     : apiURL,
-                    type    : "GET",
-                    dataType: "json",
-                    success : function(response) {
-                        if(response.success==true) {
-                            alert(response.success);
-                            //assignment = response.data;
-                            //var message = "Assignment is successfully created \n";
-                            //message += "Task's name: " + assignment.name + "\n";
-                            //alert(message);
-                            //location.reload();
-                        }
-                    }
-                }); //end ajax call
             });
         </script>
         <script>
             $(window).load(function(){
-                //alert("This function is loaded");
                 var apiUrl = "https://code-camp-winter-trunghieu138.c9users.io:8081/api/sub/contractor";
                 var request = new XMLHttpRequest();
                 var res = null;
@@ -91,12 +83,13 @@
 
 
 <body>
-    <nav class="navbar navbar-inverse" style="text-align:center;background-color: #332C2F;">
-        <h1 style="color:white;margin-top:10px;">MANUFACTURER</h1>
-    </nav>
-		
-		
-<fieldset class="fieldset" style="margin-bottom:0px;">
+	<nav class="navbar navbar-inverse" style="margin-bottom:0;text-align:center;background-color: #332C2F;">
+  <h1 style="color:white;margin-top:10px;">MANUFACTURER</h1>
+</nav>
+	
+
+
+<fieldset class="fieldset" style="margin-top:50px;margin-bottom:0px;">
 <form action="" id="registerAssignment">
     <div class="panel panel-primary" style="margin-bottom:0px;">  
     <div class="panel-heading">
@@ -111,18 +104,22 @@
         <label style="padding-top:20px;text-align:center;" class="bg-success">Task's Name</label>
         <input type="text" data-clear-btn="false" name="taskname-1" id="taskname-1">
         
-        <label for="textinput-disabled" style="padding-top:20px;text-align:center;"class="bg-success">Select Component</label>
-        <select name="select-component" id="select-component"></select>
+        <label for="textinput-disabled" style="padding-top:20px;text-align:center;"class="bg-success">Component</label>
+        <select name="select-component" id="select-component">
+            <option selected="true" style="display:none;">Select component</option>
+        </select>
     
         <label style="padding-top:20px;text-align:center;"class="bg-success">Assign Subcontractor</label>
-        <select name="select-contractor" id="select-contractor"></select>
+        <select name="select-contractor" id="select-contractor">
+            <option selected="true" style="display:none;">Select sub-contractor</option>
+        </select>
     
     	<label style="padding-top:20px;text-align:center;"class="bg-success">Requirements</label>
         <textarea  cols="40" rows="8" name="req" id="req"></textarea>
     
         <label style="padding-top:20px;text-align:center;" class="bg-success">Deadline</label>
         <input type="date" data-clear-btn="false" name="date-1" id="date-1" value="">
-
+        
         <div style="padding-top:20px;float:left;width:100%;">
             
         <input type="submit" value="Create Assignment" />
@@ -136,17 +133,17 @@
                 <div>
                 <button type="submit" style="float:left;width:33%;background-color:#5cb85c;">
                     <span class="glyphicon glyphicon-floppy-save" aria-hidden="true"></span>
-                    <p style="font-size:20px;color:white;">Save</p>
+                    <p style="font-size:11px;color:white;">Save session</p>
                 </button>
                 
-                <button onclick="window.location.href='http://code-camp-winter-trunghieu138.c9users.io/createassignmentmanu.html'" type="submit" style="float:left;width:33%;background-color:#f0ad4e;">
+                <button onclick="window.location.href='http://ltc-otso2015-kurosh.c9users.io/createassignmentmanu.html'" type="submit" style="float:left;width:33%;background-color:#f0ad4e;">
                     <span class="glyphicon glyphicon-trash" aria-hidden="true"></span>
-                    <p style="font-size:20px;color:white;">Reset</p>
+                    <p style="font-size:11px;color:white;">Reset</p>
                 </button> 
                 
-                <button onClick="location.href='http://code-camp-winter-trunghieu138.c9users.io/manufacturer.html'" type="submit" style="float:left;width:33%;background-color:#d9534f;">
+                <button onClick="location.href='http://ltc-otso2015-kurosh.c9users.io/manufacturer.html'" type="submit" style="float:left;width:33%;background-color:#d9534f;">
                     <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
-                    <p style="font-size:20px;color:white;">Close</p>
+                    <p style="font-size:11px;color:white;">Close</p>
                 </button>
                 </div>
             
@@ -209,6 +206,7 @@ $( document ).ready(function(){
 <script type="text/javascript">
     app.initialize();
 </script>
+
 </body>
 
 </html>

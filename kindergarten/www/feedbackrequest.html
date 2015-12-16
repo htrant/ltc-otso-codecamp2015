@@ -45,12 +45,11 @@
 
 
 <body>
-<nav class="navbar navbar-inverse" style="text-align:center;background-color: #332C2F;">
-    <h1 style="color:white;margin-top:10px;">MANUFACTURER</h1>
+	<nav class="navbar navbar-inverse" style="margin-bottom:0;text-align:center;background-color: #332C2F;">
+  <h1 style="color:white;margin-top:10px;">MANUFACTURER</h1>
 </nav>
-		
-		
-<fieldset class="fieldset" style="margin-bottom:0px;">
+	
+<fieldset class="fieldset" style="margin-top:50px;margin-bottom:0px;">
 <form action="" id="sendRequest">
     <div class="panel panel-primary" style="margin-bottom:0px;">  
     <div class="panel-heading">
@@ -64,15 +63,39 @@
       
     <div class="panel-body">
         <label for="textinput-disabled" style="padding-top:20px;text-align:center;"class="bg-success">Customers from City</label>
-        <select name="city-picker" id="city-picker"></select>
+        <select name="city-picker" id="city-picker">
+            <option selected="true" style="display:none;">Select city</option>
+        </select>
             
-        <input type="submit" value="Send Request" />
+        <input data-toggle="modal" data-target="#myModal" type="submit" value="Send Request" />
     </div>
     
     </div>
 </form>
 
-<div id="reportRes"></div>
+					<!-- Modal -->
+						<div id="myModal" class="modal fade" role="dialog">
+						  <div class="modal-dialog">
+						    <!-- Modal content-->
+						    <div class="modal-content">
+						      <div class="modal-header">
+						        <!--<button type="button" class="close" data-dismiss="modal">&times;</button>-->
+						        <center><h4 class="modal-title">Feedback view</h4></center>
+						      </div>
+						      <div class="modal-body">
+						          <center>
+                                    <!-- load assignment detail -->
+                                    <div id="assignmentDetail">
+                                       <div class="alert alert-success" role="alert"><div id="reportRes"></div></div>
+                                    </div>
+                                    </center>
+						      </div>
+						      <div class="modal-footer">
+						        <button type="button"  class="btn btn-default"  onclick="window.location.href='http://ltc-otso2015-kurosh.c9users.io/viewassignment.html'" data-dismiss="modal">OK</button>
+						      </div>
+						    </div>
+						  </div>
+						</div>
 
 </fieldset>
 	
@@ -119,6 +142,7 @@ $( document ).ready(function(){
 <script type="text/javascript">
     app.initialize();
 </script>
+
 </body>
 
 </html>
